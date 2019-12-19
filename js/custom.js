@@ -1,3 +1,4 @@
+'use strict';
 
 let spielfeldgroesse = 0;
 let zeitEinstellung = 0;
@@ -6,6 +7,8 @@ let spielAktiv = false;
 let klickVerboten = false;
 let countdown;
 let memKlasse;
+const hit = document.getElementById("hit");;
+const yay = document.getElementById("yay");;
 
 function spielReset() {
     $('#memory').empty();
@@ -20,6 +23,10 @@ function spielReset() {
 spielReset();
 
 function getsettings() {
+    yay.currentTime = 0;
+    yay.play();
+    hit.currentTime = 0;
+    hit.play();
     spielfeldgroesse = $("input[name='spielbrett']:checked").val();
     zeitEinstellung = $("input[name='schwierigkeitsgrad']:checked").val();
     zeitEinstellung = zeitEinstellung * 60;
@@ -58,10 +65,13 @@ function starteSpiel() {
 
 function klickKarten() {
     spielAktiv = true;
+
     if (this.innerHTML !== '' || klickVerboten === true) {
         return;
     }
 
+    hit.currentTime = 0;
+    hit.play();
     this.classList.add('aufgedeckt');
     let memoryZahl = this.getAttribute('data-zahl');
     this.innerHTML = `<img src="img/karte_${memoryZahl}.jpg">`;
@@ -70,6 +80,8 @@ function klickKarten() {
     if (alleAufgedeckt.length === 2) {
         alleAufgedeckt.removeClass('aufgedeckt');
         if (alleAufgedeckt[0].innerHTML === alleAufgedeckt[1].innerHTML) {
+            yay.currentTime = 0;
+            yay.play();
             alleAufgedeckt.addClass('gleiche');
             checkSpielende();
         } else {
