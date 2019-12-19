@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/custom.css">
+    <title>Memory</title>
+</head>
+<body>
+<div class="container">
+
+  <div class="row">
+    <div class="col-8 offset-2" id="settings">
+      <h2 class="text-center">Memory Spiel</h2>
+      <p>Herzlichen Willkommen zum Memory Spiel. Bitte wählen Sie die Größe des Spielbretts und den Schwierigkeitsgrad.</p>
+
+      <div class="row">
+        <div class="col-6">
+          <h4>Spielbrett</h4>
+          <div class="alert alert-primary" role="alert">
+            <div class="custom-control custom-radio custom-control-inline">
+              <input type="radio" id="2x2radio" name="spielbrett" class="custom-control-input" value="2">
+              <label class="custom-control-label" for="2x2radio">2 x 2</label>
+            </div>
+            <div class="custom-control custom-radio custom-control-inline">
+              <input type="radio" id="4x4radio" name="spielbrett" class="custom-control-input" value="8">
+              <label class="custom-control-label" for="4x4radio">4 x 4</label>
+            </div><br>
+            <div class="custom-control custom-radio custom-control-inline">
+              <input type="radio" id="6x6radio" name="spielbrett" class="custom-control-input" value="18" checked>
+              <label class="custom-control-label" for="6x6radio">6 x 6</label>
+            </div>
+            <div class="custom-control custom-radio custom-control-inline">
+              <input type="radio" id="8x8radio" name="spielbrett" class="custom-control-input" value="32">
+              <label class="custom-control-label" for="8x8radio">8 x 8</label>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-6">
+          <h4>Schwierigkeit</h4>
+          <div class="alert alert-primary" role="alert">
+            <div class="custom-control custom-radio">
+                <input type="radio" id="5minRadio" name="schwierigkeitsgrad" class="custom-control-input" value="5" checked>
+                <label class="custom-control-label" for="5minRadio">Anfänger: 5 Minuten</label>
+            </div>
+            <div class="custom-control custom-radio">
+                <input type="radio" id="3minRadio" name="schwierigkeitsgrad" class="custom-control-input" value="3">
+                <label class="custom-control-label" for="3minRadio">Fortgeschrittener: 3 Minuten</label>
+            </div>
+            <div class="custom-control custom-radio">
+                <input type="radio" id="1minRadio" name="schwierigkeitsgrad" class="custom-control-input"  value="1">
+                <label class="custom-control-label" for="1minRadio">Experte: 1 Minute</label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+          <div class="col-12" id="startbutton">
+              <button type="button" class="btn btn-primary btn-lg" id="getsettings" type="button">Spiel starten</button>
+          </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-3">
+      <div id="countdown" class="alert alert-danger">
+        <h4>Verbleibende Zeit:<br><span id="timer"></span></h4>
+      </div>
+    </div>
+    <div class="col-9">
+      <div id="msg" class="alert alert-success">
+        <button type="button" class="btn btn-primary btn-lg" id="neuesspiel" type="button">Neues spiel starten</button>
+      </div>
+      <div id="spiel">
+        <div id="memory"></div>
+      </div>
+    </div>
+  </div>
+
+</div>
+<script src="js/jquery-3.4.1.min.js"></script>
+<script src="js/bootstrap.bundle.min.js"></script>
+<script src="js/custom.js"></script>
+</body>
+</html>
