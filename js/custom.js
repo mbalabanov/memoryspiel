@@ -13,6 +13,7 @@ function spielAufbau() {
     $('#msg').addClass('hidden');
     $('#settings').removeClass('hidden');
     $('#countdown').addClass('hidden');
+    $('#timer').empty()
 }
 
 spielAufbau();
@@ -101,7 +102,7 @@ function starteCountdown(duration) {
     countdown = setInterval(function () {
         minutes = parseInt(timer / 60, 10)
         seconds = parseInt(timer % 60, 10);
-        document.querySelector('#timer').textContent = minutes + ":" + seconds;
+        $('#timer').text(minutes + ":" + seconds)
         minutes = minutes < 10 ? "0" + minutes : minutes;
         seconds = seconds < 10 ? "0" + seconds : seconds;
 
