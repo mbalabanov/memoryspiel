@@ -7,16 +7,17 @@ let klickVerboten = false;
 let countdown;
 let memKlasse;
 
-function spielAufbau() {
+function spielReset() {
     $('#memory').empty();
     $('#memory').addClass('hidden').removeClass('grid').removeClass(memKlasse).empty();
     $('#msg').addClass('hidden');
     $('#settings').removeClass('hidden');
     $('#countdown').addClass('hidden');
-    $('#timer').empty()
+    $('#timer').empty();
+    klickVerboten = false;
 }
 
-spielAufbau();
+spielReset();
 
 function getsettings() {
     spielfeldgroesse = $("input[name='spielbrett']:checked").val();
@@ -95,6 +96,7 @@ function checkSpielende() {
 function spielEnde() {
     clearInterval(countdown);
     $('#msg').removeClass('hidden');
+    klickVerboten = true;
 }
 
 function starteCountdown(duration) {
@@ -114,4 +116,4 @@ function starteCountdown(duration) {
 }
 
 $('#getsettings').click(getsettings);
-$('#neuesspiel').click(spielAufbau);
+$('#neuesspiel').click(spielReset);

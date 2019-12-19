@@ -45,7 +45,8 @@ img {
     border: 1px solid black;
     padding: 0;
     overflow: hidden;
-    background-image: url('../img/back.jpg')
+    background-image: url('../img/back.jpg');
+    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.6);
 }
 #msg {
     width: 25rem;
