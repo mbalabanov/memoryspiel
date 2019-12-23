@@ -69,11 +69,14 @@
     <div class="col-3">
       <div id="countdown" class="alert alert-danger">
         <h4>Verbleibende Zeit:<br><span id="timer"></span></h4>
+        <br><br><button type="button" class="btn btn-primary btn-lg" id="spielneustart" type="button">Spiel neu starten</button>
       </div>
     </div>
     <div class="col-9">
       <div id="msg" class="alert alert-success">
-        <button type="button" class="btn btn-primary btn-lg" id="neuesspiel" type="button">Neues spiel starten</button>
+        <p id="msg-zeitaus">Sorry, die Zeit ist leider aus.</p>
+        <p id="msg-success">Gratuliere! Sie haben gewonnen.</p>
+        <button type="button" class="btn btn-primary btn-lg" id="neuesspiel" type="button">Neues Spiel starten</button>
       </div>
       <div id="spiel">
         <div id="memory"></div>
@@ -85,6 +88,8 @@
 
 <audio id="yay" src="audio/openhat.wav" type="audio/mpeg"></audio>
 <audio id="hit" src="audio/snare.wav" type="audio/mpeg"></audio>
+<audio id="win" src="audio/ta-da.wav" type="audio/mpeg"></audio>
+<audio id="loss" src="audio/losing.wav" type="audio/mpeg"></audio>
 
 <script src="js/jquery-3.4.1.min.js"></script>
 <script src="js/bootstrap.bundle.min.js"></script>

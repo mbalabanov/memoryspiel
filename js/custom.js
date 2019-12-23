@@ -5,19 +5,32 @@ let zeitEinstellung = 0;
 let felder = [];
 let spielAktiv = false;
 let klickVerboten = false;
+let zeitaus = false;
 let countdown;
 let memKlasse;
 const hit = document.getElementById("hit");;
 const yay = document.getElementById("yay");;
+const win = document.getElementById("win");;
+const loss = document.getElementById("loss");;
 
 function spielReset() {
+    clearInterval(countdown);
+    if (spielAktiv) {
+        if (!confirm('Wollen Sie wirklich das bestehende Spiel neu starten?')) {
+            return;
+        }
+    }
     $('#memory').empty();
     $('#memory').addClass('hidden').removeClass('grid').removeClass(memKlasse).empty();
     $('#msg').addClass('hidden');
     $('#settings').removeClass('hidden');
+    $('#spielneustart').removeClass('hidden');
     $('#countdown').addClass('hidden');
     $('#timer').empty();
+
     klickVerboten = false;
+    spielAktiv = true;
+    zeitaus = false;
 }
 
 spielReset();
@@ -106,9 +119,24 @@ function checkSpielende() {
 }
 
 function spielEnde() {
+    spielAktiv = false;
+    klickVerboten = true;
     clearInterval(countdown);
     $('#msg').removeClass('hidden');
-    klickVerboten = true;
+    $('#spielneustart').addClass('hidden');
+
+    if (zeitaus) {
+        $('#msg-zeitaus').removeClass('hidden');
+        $('#msg-success').addClass('hidden');
+        loss.currentTime = 0;
+        loss.play();
+    } else {
+        $('#msg-success').removeClass('hidden');
+        $('#msg-zeitaus').addClass('hidden');
+        win.currentTime = 0;
+        win.play();
+    }
+
 }
 
 function starteCountdown(duration) {
@@ -122,10 +150,12 @@ function starteCountdown(duration) {
 
         if (--timer < 0) {
             timer = duration;
-            spielEnde()
+            zeitaus = true;
+            spielEnde();
         }
     }, 1000);
 }
 
 $('#getsettings').click(getsettings);
 $('#neuesspiel').click(spielReset);
+$('#spielneustart').click(spielReset);
